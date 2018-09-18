@@ -1,0 +1,56 @@
+
+
+Tarea 2.1
+
+Escribe un programa en java / C que implemente el método de la congruencia lineal para generar números pseudoaleatorios
+
+El programa recibe la semilla, el multiplicador, el corrimiento, el módulo y cuantos numeros se generan
+
+El programa debe decir quien es la cola, el periodo, y el ciclo con sus respectivas longitudes(independientemente del valor de "cuantos")
+
+El programa genera "cuantos" numeros pseudoaleatorios y encuentra la media, mediana, moda, desviación estándar  y varianza de los datos SIN utilizar librerias.
+
+Ajusta los resultados (numeros generados) al rango 0,1 y escribe el % de valores que caen...
+a) entre 0.0 y 0.1 (0.0 < x <= 0.1)
+b) entre 0.1 y 0.2 (0.1 < x <= 0.2)
+...
+j) entre 0.9 y 1.0 (0.9 < x <= 1.0)
+
+probar el programa con los siguientes valores:
+
+a)
+    x0         =  6731
+    a          =   769  
+    c          =  8376
+    m          =  9699
+    cuantos =  4096 
+
+b)
+    x0         =  7642
+    a          =   867  
+    c          =  7727
+    m          =  9419
+    cuantos =  8192 
+
+c)
+    x0         =   111
+    a          =  8421  
+    c          =  9943
+    m          = 11791
+    cuantos = 16384 
+
+
+Pueden trabajar en equipos de 2 personas
+
+
+escribe en un txt las conclusiones del equipo
+El programa debe funcionar con entrada redireccionada.
+
+subir un zip con:
+Main.java / XXXXXXX.c
+conclusion.txt
+
+
+Límite de entrega:
+Martes 02 Oct, 10:02 hrs
+
