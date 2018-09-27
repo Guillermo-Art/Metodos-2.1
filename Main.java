@@ -1,139 +1,45 @@
-//Fernando Castillo Cosme A01328869
+//Guillermo Arturo Hernández Tapia      A01321776
 
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main{
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int semilla = Integer.parseInt(sc.nextLine());
-    int multiplicador = Integer.parseInt(sc.nextLine());
-    int corrimiento = Integer.parseInt(sc.nextLine());
-    int modulo = Integer.parseInt(sc.nextLine());
-    int c = Integer.parseInt(sc.nextLine());
-    int[] cuantos = new int [c];
 
-    int n = Integer.parseInt(sc.nextLine());
-    int[] datos = new int[n];
-    String[] arr=new String[n];
-    int num, den, cont=0;
-    int[] frec=new int[n];
-    int[] x = new int [n];
+    private static MedidasEstadisticas analisis_datos = new MedidasEstadisticas();
+    public static void main(String args[]) throws IOException{
 
-    for (int i =0; i<n; i++) {
-      datos[i]=Integer.parseInt(sc.nextLine());
+        GeneradoresDeAleatorios ga = new GeneradoresDeAleatorios();
+
+        int semilla = 0;
+        int multiplicador = 0;
+        int corrimiento = 0;
+        int modulo = 0;
+        int numero_valores_generados = 0;
+
+        Scanner sc = new Scanner(System.in);
+        
+        semilla = Integer.parseInt(sc.next());
+        multiplicador = Integer.parseInt(sc.next());
+        corrimiento = Integer.parseInt(sc.next());
+        modulo = Integer.parseInt(sc.next());
+        numero_valores_generados = Integer.parseInt(sc.next());
+
+        imprimeResultadosEstadisticos(ga.congruencia_lineal_mixto(semilla, multiplicador, corrimiento, modulo));
+        imprimeResultadosEstadisticos(ga.congruencia_lineal_multiplicativo(semilla, multiplicador, modulo));
+        
+        sc.close();
     }
 
-    Arrays.sort(datos);
-
-
-    Set<Integer> set = new HashSet<Integer>();
-    for (int numSet : datos) {
-      set.add(numSet);
-    }
-
-    Integer[] equis = set.toArray(new Integer[0]);
-    Integer[] copia = new Integer[equis.length];
-    Fraccion[] frac = new Fraccion[equis.length];
-
-    System.arraycopy(equis,0,copia,0,equis.length);
-
-    for (int i = 0; i<equis.length; i++) {
-      frec[i]=contarRepeticiones(equis[i], datos);
-      frac[i]=new Fraccion(frec[i], n);
-    }
-
-
-    System.out.println("|   X   |   n   |   N   |      f      |      F      |");
-    int contador=0;
-    for (int i =0; i<equis.length; i++) {
-      contador+=frec[i];
-      System.out.println("|   "+equis[i] + "   |   " + frec[i] + "   |   " + contador + "   |   " + frac[i] + "   |   " + contador+"/"+n+"   |");
-    }
-
-    double media = obtenerMedia(datos, n);
-    System.out.println("\nMedia: " + media);
-
-    int mediana = obtenerMediana(datos, n);
-    System.out.println("Mediana: " + mediana);
-
-    int moda = obtenerModa(frec);
-    System.out.println("Moda: " + equis[moda]);
-
-    double varianza = obtenerVarianza(datos, media, n);
-    System.out.println("Varianza: " + varianza);
-
-    System.out.println("Desviacion Estandar: " + sqrt(varianza));
-  }
-
-    public static int contarRepeticiones(int n, int[] array){
-      int i = 0, cont = 0;
-
-      while(i < array.length){
-        if(array[i] == n)
-        cont++;
-        i++;
-      }
-
-      return cont;
-    }
-
-    public static double obtenerMedia(int[] array, int n){
-      double media=0;
-      for (int i =0; i<array.length; i++) {
-        media+=array[i];
-      }
-
-      return media/n;
-    }
-
-    public static int obtenerMediana(int[] array, int n){
-      int mediana=0;
-      if (n % 2 == 0) {
-        n=n/2;
-        mediana=(array[n]+array[n+1])/2;
-      } else {
-        mediana=array[n/2];
-      }
-
-      return mediana;
-    }
-
-    public static int obtenerModa(int[] array){
-      int moda=0;
-      for (int i = 0; i<array.length ; i++) {
-          if (array[i] > moda) {
-            moda=i;
-          }
-      }
-
-      return moda;
-    }
-
-    public static double obtenerVarianza(int[] array, double media, int n){
-      double producto=0;
-      double sumatoria=0;
-      for (int i = 0; i<array.length ; i++) {
-        producto=(double)array[i]-media;
-        producto=producto*producto;
-        producto=producto/(double)n;
-        sumatoria+=producto;
-      }
-
-      return sumatoria;
-    }
-
-
-    public static double sqrt(double num){
-      double x = num;
-      if (num >=0) {
-        for (int i = 0; i<4; i++) {
-          x=((x*x)+num)/(2*x);
-        }
-      }
-      return x;
-    }
-
-    public static pseudoAleatorio(int x0, int a, int c, int m){
-
+    public static void imprimeResultadosEstadisticos(List<Integer> aleatorios){
+        System.out.println("\n*********** Medidas Estadisticas ***********");
+        System.out.println("Media: " + analisis_datos.media_estadistica(aleatorios));
+        System.out.println("Mediana: " + analisis_datos.mediana_estadistica(aleatorios));
+        System.out.println("Moda: " + analisis_datos.moda_estadistica(aleatorios));
+        float varianza = analisis_datos.varianza_estadistica(aleatorios);
+        System.out.println("Varianza: " + varianza);
+        System.out.println("Desviacion estandar: " + analisis_datos.desviacion_estandar(varianza));
     }
 }
