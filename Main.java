@@ -9,9 +9,8 @@ import java.util.Collections;
 public class Main{
 
     private static MedidasEstadisticas analisis_datos = new MedidasEstadisticas();
-    public static void main(String args[]) throws IOException{
 
-        GeneradoresDeAleatorios ga = new GeneradoresDeAleatorios();
+    public static void main(String args[]) throws IOException {
 
         int semilla = 0;
         int multiplicador = 0;
@@ -26,11 +25,12 @@ public class Main{
         corrimiento = Integer.parseInt(sc.next());
         modulo = Integer.parseInt(sc.next());
         numero_valores_generados = Integer.parseInt(sc.next());
-
-        imprimeResultadosEstadisticos(ga.congruencia_lineal_mixto(semilla, multiplicador, corrimiento, modulo));
-        imprimeResultadosEstadisticos(ga.congruencia_lineal_multiplicativo(semilla, multiplicador, modulo));
         
         sc.close();
+
+        GeneradoresDeAleatorios ga = new GeneradoresDeAleatorios(semilla, multiplicador, corrimiento, modulo, numero_valores_generados);
+
+        ga.get_cola_periodo_ciclo(semilla);
     }
 
     public static void imprimeResultadosEstadisticos(List<Integer> aleatorios){
