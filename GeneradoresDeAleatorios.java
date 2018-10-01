@@ -1,14 +1,11 @@
+//Fernando Castillo Cosme               A01328869
+//Guillermo Arturo Hernández Tapia      A01321776
+
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
 public class GeneradoresDeAleatorios{
-
-    private int x0;
-    private int a;
-    private int c;
-    private int m;
-    private int cuantos;
 
     private List<Integer> int_aleatorios;
     private List<Double> double_aleatorios;
@@ -34,19 +31,20 @@ public class GeneradoresDeAleatorios{
 
     public void get_cola_periodo_ciclo(int semilla){
         int bandera_ciclo = 0;
-        int periodo = 0;
+        int longitud_ciclo = 0;
 
         System.out.println("Cola: ");
         while(bandera_ciclo != semilla){
-            if(periodo == 0)
+            if(longitud_ciclo == 0)
                 bandera_ciclo = semilla;
 
-            semilla = int_aleatorios.get(periodo); 
-            System.out.print(int_aleatorios.get(periodo) + ", ");
-            periodo ++;
+            semilla = int_aleatorios.get(longitud_ciclo); 
+            System.out.print(int_aleatorios.get(longitud_ciclo) + ", ");
+            longitud_ciclo ++;
         }
 
-        System.out.println("\n\nPeriodo: " + periodo);
+        System.out.println("\n\nLongitud_ciclo: " + longitud_ciclo);
+        System.out.println("\nPeriodo: " + (longitud_ciclo * 2) + "\n");
     }
 
     public int get_aleatorios_en_intervalo(double limite_inf, double limite_sup){
@@ -60,7 +58,7 @@ public class GeneradoresDeAleatorios{
         return contador;
     }
 
-    public List<Integer> get_numero_aleatorios(){
+    public List<Integer> get_numeros_aleatorios(){
         return int_aleatorios;
     }
 }
