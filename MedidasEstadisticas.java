@@ -29,7 +29,7 @@ public class MedidasEstadisticas{
         aux1 = num_datos / 2;
         if(num_datos % 2 == 0){
             pos = (int)aux1;
-            aux2 = (float)(datos.get(pos) + datos.get(pos + 1))/2;
+            aux2 = (float)(datos.get(pos) + datos.get(pos - 1))/2;
         }
         if(num_datos % 2 == 1){
             pos = (int)(aux1 + 0.5);
