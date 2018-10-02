@@ -61,9 +61,10 @@ public class Main{
         System.out.println("\n*********** Medidas Estadisticas ***********");
         System.out.println("Media: " + analisis_datos.media_estadistica(aleatorios));
         System.out.println("Mediana: " + analisis_datos.mediana_estadistica(aleatorios));
-        System.out.println("Moda: " + analisis_datos.moda_estadistica(aleatorios));
+        System.out.print("Moda(s): ");
+        analisis_datos.moda_estadistica(aleatorios);
         float varianza = analisis_datos.varianza_estadistica(aleatorios);
-        System.out.println("Varianza: " + varianza);
+        System.out.println("\nVarianza: " + varianza);
         System.out.println("Desviacion estandar: " + analisis_datos.desviacion_estandar(varianza));
     }
 

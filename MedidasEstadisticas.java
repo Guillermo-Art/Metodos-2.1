@@ -2,7 +2,7 @@
 //Guillermo Arturo Hernández Tapia      A01321776
 
 import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MedidasEstadisticas{
 
@@ -38,25 +38,35 @@ public class MedidasEstadisticas{
         return aux2;
     }
 
-    public int moda_estadistica(List<Integer> datos){
-        int moda = 0;
-        int num_datos = datos.size();
-        int frecuencia_aux = 0, frecuencia_moda = 0;
+    public void moda_estadistica(List<Integer> datos){
+        List<Integer> moda = new ArrayList<Integer>();
+        int maxCount=0, i =0;
 
-        Collections.sort(datos);
-
-        for(int i=0; i < num_datos; i++){
-            frecuencia_aux = 1;
-            for(int j = i + 1; j < num_datos; j++){
-                if(datos.get(i) == datos.get(j))
-                    frecuencia_aux++;
-            }
-            if(frecuencia_aux > frecuencia_moda){
-                frecuencia_moda = frecuencia_aux;
-                moda = datos.get(i);
-            }
+        for (i=0; i<datos.size(); ++i) {
+          int count=0;
+          for (int j=0; j<datos.size(); ++j) {
+            if (datos.get(j) == datos.get(i)) ++count;
+          }
+          if (count>maxCount) {
+            maxCount=count;
+            moda.clear();
+            moda.add(datos.get(i));
+          }
+          else if (count == maxCount) {
+            moda.add(datos.get(i));
+          }
         }
-        return moda;
+
+        Set<Integer> set = new HashSet<>();
+        set.addAll(moda);
+        moda.clear();
+        moda.addAll(set);
+        Collections.sort(moda);
+
+        for (i=0; i<moda.size(); i++) {
+          System.out.print(moda.get(i)+", ");
+        }
+
     }
 
     public float varianza_estadistica(List<Integer> datos){
