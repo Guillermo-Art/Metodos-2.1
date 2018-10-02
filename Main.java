@@ -20,18 +20,18 @@ public class Main{
         int cuantos = 0;
 
         Scanner sc = new Scanner(System.in);
-        
+
         semilla = Integer.parseInt(sc.next());
         multiplicador = Integer.parseInt(sc.next());
         corrimiento = Integer.parseInt(sc.next());
         modulo = Integer.parseInt(sc.next());
         cuantos = Integer.parseInt(sc.next());
-        
+
         sc.close();
 
         GeneradoresDeAleatorios ga = new GeneradoresDeAleatorios(semilla, multiplicador, corrimiento, modulo, cuantos);
 
-        ga.get_cola_periodo_ciclo(semilla);
+        //ga.get_cola_periodo_ciclo(semilla);
 
         int intervalo_a = ga.get_aleatorios_en_intervalo(0.0, 0.1);
         System.out.println("[0.0, 0.1]: " + String.format("%.3f", get_porcentaje_aleatorios(cuantos, intervalo_a)) + "%");

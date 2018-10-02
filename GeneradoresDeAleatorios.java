@@ -11,13 +11,14 @@ public class GeneradoresDeAleatorios{
     private List<Double> double_aleatorios;
 
     public GeneradoresDeAleatorios(int X0, int a, int c, int m, int cuantos){
-        this.genera_lineal_mixto(X0, a, c, m, cuantos);  
+        this.genera_lineal_mixto(X0, a, c, m, cuantos);
     }
 
     public void genera_lineal_mixto(int X0, int a, int c, int m, int cuantos){
         int_aleatorios = new ArrayList<Integer>();
         double_aleatorios = new ArrayList<Double>();
         int semilla = X0;
+        //int_aleatorios.add(semilla);
 
         for(int i=0; i < cuantos; i++){
             semilla = ((a * semilla) + c) % m;
@@ -27,24 +28,52 @@ public class GeneradoresDeAleatorios{
         for(int i=0; i < cuantos; i++){
             double_aleatorios.add((double)int_aleatorios.get(i) / (double)m);
         }
+
+        get_cola_periodo_ciclo(int_aleatorios);
     }
 
-    public void get_cola_periodo_ciclo(int semilla){
-        int bandera_ciclo = 0;
-        int longitud_ciclo = 0;
+    public void get_cola_periodo_ciclo(List<Integer> arr){
+        int bandera_ciclo = 0, i;
+        int repeatI=0, repeatF=0;
+        int longitud_ciclo = 0, longitud_cola=0, longitud_periodo=0;
+        int contar[] = new int [99999999];
 
-        System.out.println("Cola: ");
-        while(bandera_ciclo != semilla){
-            if(longitud_ciclo == 0)
-                bandera_ciclo = semilla;
-
-            semilla = int_aleatorios.get(longitud_ciclo); 
-            System.out.print(int_aleatorios.get(longitud_ciclo) + ", ");
-            longitud_ciclo ++;
+        for (i = 0; i < arr.size(); i++) {
+          if (contar[arr.get(i)] == 1) {
+            repeatF=i;
+            break;
+          }
+          else
+            contar[arr.get(i)]++;
         }
 
-        System.out.println("\n\nLongitud_ciclo: " + longitud_ciclo);
-        System.out.println("\nPeriodo: " + (longitud_ciclo * 2) + "\n");
+        for (i=0; i<arr.size(); i++) {
+          if (arr.get(i) == arr.get(repeatF)) {
+            repeatI=i;
+            break;
+          }
+        }
+
+        System.out.print("Cola: ");
+        for (i=0; i<repeatI; i++) {
+          System.out.print(arr.get(i) + ", ");
+          longitud_cola++;
+        }
+        System.out.println("\nLongitud Cola: " + longitud_cola);
+
+        System.out.print("\nCiclo: ");
+        for (i=repeatI; i<=repeatF; i++) {
+          System.out.print(arr.get(i) + ", ");
+          longitud_ciclo++;
+        }
+        System.out.println("\nLongitud Ciclo: " + longitud_ciclo);
+
+        System.out.print("\nPeriodo: ");
+        for (i=0; i<=repeatF; i++) {
+          System.out.print(arr.get(i) + ", ");
+          longitud_periodo++;
+        }
+        System.out.println("\nLongitud Periodo: " + longitud_periodo + "\n");
     }
 
     public int get_aleatorios_en_intervalo(double limite_inf, double limite_sup){
