@@ -18,7 +18,7 @@ public class GeneradoresDeAleatorios{
         int_aleatorios = new ArrayList<Integer>();
         double_aleatorios = new ArrayList<Double>();
         int semilla = X0;
-        //int_aleatorios.add(semilla);
+        int_aleatorios.add(semilla);
 
         for(int i=0; i < cuantos; i++){
             semilla = ((a * semilla) + c) % m;
@@ -62,14 +62,14 @@ public class GeneradoresDeAleatorios{
         System.out.println("\nLongitud Cola: " + longitud_cola);
 
         System.out.print("\nCiclo: ");
-        for (i=repeatI; i<=repeatF; i++) {
+        for (i=repeatI; i<repeatF; i++) {
           System.out.print(arr.get(i) + ", ");
           longitud_ciclo++;
         }
         System.out.println("\nLongitud Ciclo: " + longitud_ciclo);
 
         System.out.print("\nPeriodo: ");
-        for (i=0; i<=repeatF; i++) {
+        for (i=0; i<repeatF; i++) {
           System.out.print(arr.get(i) + ", ");
           longitud_periodo++;
         }
@@ -79,7 +79,7 @@ public class GeneradoresDeAleatorios{
     public int get_aleatorios_en_intervalo(double limite_inf, double limite_sup){
         int contador = 0;
 
-        for(int i=0; i < int_aleatorios.size(); i++){
+        for(int i=0; i < int_aleatorios.size()-1; i++){
             if(limite_inf < double_aleatorios.get(i) && double_aleatorios.get(i) <= limite_sup)
                 contador ++;
         }
