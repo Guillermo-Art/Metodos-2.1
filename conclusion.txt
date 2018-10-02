@@ -1,0 +1,28 @@
+//Fernando Castillo Cosme               A01328869
+//Guillermo Arturo Hernández Tapia      A01321776
+
+Para esta tarea se implementó una función generadora de números aletorios conocida como "Generador Congruencial Mixto",
+en el cual se genera una secuencia de números pseudoaleatorios (se consideran así porque pasan todas las pruebas estadisticas
+de aleatoriedad). En este método el próximo número pseudoaleatorio es determinado a partir del último número generado.
+
+--> La importancia de los números rectangulares (distrubución uniforme) radica en su uso para generar variables aleatorias que
+    son utilizadas en los experimentos de simulación.
+
+--> Los números aleatorios generados deben cumplir con ciertas características que aseguren su confiabilidad:
+
+    1. Uniformemente distribuidos.
+    2. Estadisticamente independientes.
+    3. Reproducibles.
+    4. Periodo largo (sin repetición dentro de una longitud determinada de la sucesión).
+    5. Generados a través de un método rápido.
+    6. Que puedan ser generados sin utilizar muchos recursos de una computadora.
+
+--> Los parametros del generador deben cumplir ciertas reglas que nos permiten asegurar que el generador resultante tendrá un
+    periodo completo.
+
+--> La implementación del generador congruencial mixto nos permitió entender las características para considerar a un generador
+    como pseudoaleatorio, ya que a pesar de ser obtenidos a través de una regla deterministica estos cumplen con las propiedades 
+    para ser considerados como una opción aceptable dentro de un experimento. Además, las pruebas estadísticas nos permiten
+    observar su comportamiento general a través de la curva de distribución normal y como cada valor generado se distribuye con respecto
+    a la media estadistica, así como su varianza con respecto a la misma. Por último, observar los valores generados dentro del 
+    intervalo [0, 1] nos permitío observar que cada número está uniformemente distribuido dentro del intervalo. 

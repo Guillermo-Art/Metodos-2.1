@@ -64,7 +64,7 @@ public class MedidasEstadisticas{
         Collections.sort(moda);
 
         for (i=0; i<moda.size(); i++) {
-          System.out.print(moda.get(i)+", ");
+            System.out.print(moda.get(i) + " ");
         }
 
     }
